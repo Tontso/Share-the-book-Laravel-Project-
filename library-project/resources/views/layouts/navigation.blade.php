@@ -17,12 +17,12 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('create-book')">
+                    <x-nav-link :href="route('books.create')">
                         {{ 'Insert New Book' }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('show-books',['user'=>Auth::user()])">
+                    <x-nav-link :href="route('books.index',['user'=>Auth::user()])">
                         {{ 'My books' }}
                     </x-nav-link>
                 </div>

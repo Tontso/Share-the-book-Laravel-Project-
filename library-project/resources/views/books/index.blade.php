@@ -23,10 +23,10 @@
                             @foreach ($books as $book)
                             <tr class="border-b">
                                 <td class="px-4 py-4"><a
-                                        href="{{route('show-book', ['book' => $book])}}">{{$book->title}}</a></td>
+                                        href="{{route('books.show', ['book' => $book])}}">{{$book->title}}</a></td>
                                 <td class=" px-4">{{$book->author}}</td>
                                 <td class="px-4">{{$book->genre->name}}</td>
-                                <td class="px-4"><a href="{{ route('edit-book',['book' => $book]) }}">Edit</a></td>
+                                <td class="px-4"><a href="{{ route('books.edit',['book' => $book]) }}">Edit</a></td>
                                 <td class="px-4">Delete</td>
                             </tr>
                             @endforeach

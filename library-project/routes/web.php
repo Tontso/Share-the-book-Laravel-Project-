@@ -25,20 +25,19 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/book', [BookController::class, 'create'])->name('create-book');
-Route::post('/book', [BookController::class, 'store'])->name('create-book');
+Route::get('/{user}/books', [BookController::class, 'index'])->name('books.index');
+Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
+Route::post('/books', [BookController::class, 'store'])->name('books.store');
+Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
+Route::get('/books/{book}/edit', [BookController::class, 'edit'])->name('books.edit');
+Route::patch('/book/{book}', [BookController::class, 'update'])->name('books.update');
 
-Route::get('/books/{book}', [BookController::class, 'show'])->name('show-book');
-
-Route::get('/book/{book}', [BookController::class, 'edit'])->name('edit-book');
-Route::patch('/book/{book}', [BookController::class, 'update'])->name('edit-book');
-
-Route::get('/{user}/books', [BookController::class, 'index'])->name('show-books');
-
-Route::post('/books/{book}', [CommentController::class, 'store'])->name('add-comment');
+Route::post('/books/{book}/comments', [CommentController::class, 'store'])->name('comments.store');
 
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
-Route::get('/profile/{user}', [UserProfileController::class, 'index'])->name('profile');
+Route::get('/profile/{user}', [UserProfileController::class, 'show'])->name('profiles.show');
+Route::patch('/profile/{user}/follow', [UserProfileController::class, 'follow'])->name('follow');
+Route::patch('/profile/{user}/unfollow', [UserProfileController::class, 'unfollow'])->name('unfollow');
 
 require __DIR__ . '/auth.php';

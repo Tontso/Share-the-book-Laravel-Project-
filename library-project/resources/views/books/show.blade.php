@@ -20,14 +20,14 @@
                         <strong>{{$comment->user->name}} :</strong> {{$comment->body}}
                     </div>
                     @endforeach
-                    <form action="{{ route('add-comment',['book' => $book]) }}" method="POST">
+                    <form action="{{ route('comments.store',['book' => $book]) }}" method="POST">
                         @csrf
                         Comment:<input type="text" name="body">
                         <button class="mt-4 ml-4">Comment</button>
                     </form>
                 </div>
                 @if (Auth::id() == $book->user_id)
-                <form action="{{ route('edit-book',['book' => $book]) }}" method="GET">
+                <form action="{{ route('books.edit',['book' => $book]) }}" method="GET">
                     <button class="mt-4 ml-4">Edit</button>
                 </form>
                 @endif

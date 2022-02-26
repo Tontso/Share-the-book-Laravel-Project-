@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 max-w-xl">
 
-                    <form method="POST" action="{{ route('create-book') }}">
+                    <form method="POST" action="{{ route('books.store') }}">
                         @csrf
 
                         <!-- Title -->

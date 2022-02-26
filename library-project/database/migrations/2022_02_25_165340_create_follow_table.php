@@ -19,7 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('followee');
             $table->foreign('follower')->references('id')->on('users')->cascadeOnDelete();
             $table->foreign('followee')->references('id')->on('users')->cascadeOnDelete();
-            $table->timestamps();
+            $table->timestamp('created_at')->now();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

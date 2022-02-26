@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 max-w-xl">
                     @if (Auth::id() == $book->user_id)
-                    <form action="{{ route('edit-book',['book' => $book]) }}" method="POST">
+                    <form action="{{ route('books.update',['book' => $book]) }}" method="POST">
                         @csrf
                         @method('PATCH')
                         <div>

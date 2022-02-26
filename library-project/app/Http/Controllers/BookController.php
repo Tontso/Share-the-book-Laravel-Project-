@@ -15,7 +15,7 @@ class BookController extends Controller
 
     public function create()
     {
-        return view('book', ['genres' => Genre::all()]);
+        return view('books.create', ['genres' => Genre::all()]);
     }
 
     public function store(Request $request)
@@ -44,17 +44,17 @@ class BookController extends Controller
 
     public function index(User $user)
     {
-        return view('user-books', ['books' => $user->books]);
+        return view('books.index', ['books' => $user->books]);
     }
 
     public function show(Book $book)
     {
-        return view('show-book', ['book' => $book]);
+        return view('books.show', ['book' => $book]);
     }
 
     public function edit(Book $book)
     {
-        return view('edit-book', ['book' => $book, 'genres' => Genre::all()]);
+        return view('books.edit', ['book' => $book, 'genres' => Genre::all()]);
     }
 
     public function update(Book $book)
@@ -66,6 +66,6 @@ class BookController extends Controller
         ]);
         $attributes['description'] = request()['description'];
         $book->update($attributes);
-        return redirect(route('show-book', ['book' => $book]));
+        return redirect(route('books.index', ['user' => Auth::user()]));
     }
 }

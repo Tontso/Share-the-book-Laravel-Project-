@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
 {
@@ -14,7 +15,7 @@ class SearchController extends Controller
 
     private function searchResult(string $query)
     {
-        $user = User::where('name', 'like', '%' . $query . '%')->get();
+        $user = User::where('name', 'like', '%' . $query . '%')->where('name', '!=', Auth::user()->name)->get();
         return $user;
     }
 }
