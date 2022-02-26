@@ -5,6 +5,14 @@
         </h2>
     </x-slot>
 
+    <div class="topnav">
+        <div class="search-container">
+            <form action="{{route('search')}}" method="GET">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
