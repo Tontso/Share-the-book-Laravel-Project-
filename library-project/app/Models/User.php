@@ -41,4 +41,31 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
+
+    public function follows()
+    {
+        return $this->belongsToMany(User::class, 'follow',);
+    }
+
+    /**
+     * Users that are following "current_user".
+     */
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follow', 'followee', 'follower');
+    }
+
+    /**
+     * Users that "current_user" is following.
+     */
+    public function follow()
+    {
+        return $this->belongsToMany(User::class, 'follow', 'follower', 'followee');
+    }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +23,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/post', function() {
-    return view('post');
-});
+Route::get('/book', [BookController::class, 'create'])->name('create-book');
+Route::post('/book', [BookController::class, 'store'])->name('create-book');
 
-require __DIR__.'/auth.php';
+Route::get('/books/{book}', [BookController::class, 'show'])->name('show-book');
+
+Route::get('/book/{book}', [BookController::class, 'edit'])->name('edit-book');
+Route::patch('/book/{book}', [BookController::class, 'update'])->name('edit-book');
+
+Route::get('/{user}/books', [BookController::class, 'index'])->name('show-books');
+
+Route::post('/books/{book}', [CommentController::class, 'store'])->name('add-comment');
+
+require __DIR__ . '/auth.php';
