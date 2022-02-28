@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,7 @@ class BookFactory extends Factory
             'author' => $this->faker->name,
             'description' =>  $this->faker->sentence,
             'genre_id' => '1',
-            'user_id' => '1'
+            'user_id' => User::factory()
         ];
     }
 }

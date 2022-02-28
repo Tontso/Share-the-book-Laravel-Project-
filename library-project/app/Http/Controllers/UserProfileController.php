@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+
 use Illuminate\Support\Facades\Auth;
 
 class UserProfileController extends Controller
@@ -13,15 +14,15 @@ class UserProfileController extends Controller
     }
 
 
-    public function follow(User $user)
+    public function follow(User $currentUser, User $user)
     {
-        Auth::user()->follow()->attach($user);
+        $currentUser->follow()->attach($user);
         return back();
     }
 
-    public function unfollow(User $user)
+    public function unfollow(User $currentUser, User $user)
     {
-        Auth::user()->follow()->detach($user);
+        $currentUser->follow()->detach($user);
         return back();
     }
 }

@@ -10,7 +10,7 @@ class SearchController extends Controller
     public function index()
     {
         $results = $this->searchResult(request('search'));
-        return view('search/search-results', ['results' => $results]);
+        return view('search.index', ['results' => $results]);
     }
 
     private function searchResult(string $query)

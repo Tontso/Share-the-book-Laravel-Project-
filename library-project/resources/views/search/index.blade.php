@@ -7,7 +7,7 @@
 
     <div class="topnav">
         <div class="search-container">
-            <form action="{{route('search')}}" method="GET">
+            <form action="{{route('search.index')}}" method="GET">
                 <input type="text" placeholder="Search.." name="search">
                 <button type="submit">Submit</button>
             </form>

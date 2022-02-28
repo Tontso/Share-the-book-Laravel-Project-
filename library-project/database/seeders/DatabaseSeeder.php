@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Genre::factory(5)->create();
 
-        \App\Models\Book::factory(5)->create();
+        \App\Models\Book::factory(5)->create(['user_id' => '1']);
 
         DB::table('follow')->insert(
             [
